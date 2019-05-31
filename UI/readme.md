@@ -34,7 +34,7 @@ Use IBMid or Softlayer ID as appropiate, notice that not all accounts have acces
 
 Go to the VPC Getting Started External link icon page in IBM Cloud console.
 
-![](images/VPC%20creation%2001.png)
+![](Images/VPC%20creation%2001.png)
 
 1. Click Create VPC on the Getting Started page.
 2. Enter a name for the VPC, such as DemoWindows.
@@ -45,23 +45,23 @@ Go to the VPC Getting Started External link icon page in IBM Cloud console.
 7. Select an ACL for the subnet. Let's select Use VPC default to use the default ACL that's created for this VPC.
 8. Click Create virtual private cloud.
 
-![](images/VPC%20creation%2002.png)
+![](Images/VPC%20creation%2002.png)
 
 ### 2. Confirm the VPC and subnet creation.
-![](images/VPC%20creation%2003.png)
+![](Images/VPC%20creation%2003.png)
 
-![](images/VPC%20creation%2004.png)
+![](Images/VPC%20creation%2004.png)
 
 
 ### Create an SSH Key
 
 An SSH key is required when creating a VPC instance. Copy the ssh public key you wish to use to vpc-key.pub and click over Add SSH Key to fill out the Name, Region and Public key contents, after that confirm that the key has been created.
 
-![](images/SSH%20creation%2001.png)
+![](Images/SSH%20creation%2001.png)
 
-![](images/SSH%20creation%2002.png)
+![](Images/SSH%20creation%2002.png)
 
-![](images/SSH%20creation%2003.png)
+![](Images/SSH%20creation%2003.png)
 
 ### 4. Create the base instance for Windows deployment
 
@@ -80,11 +80,11 @@ You can also select which security groups to attach to this instance. By default
 
 Click **Create virtual server instance**.
 
-![](images/VSI%20creation%2001.png)
+![](Images/VSI%20creation%2001.png)
 
-![](images/VSI%20creation%2002.png)
+![](Images/VSI%20creation%2002.png)
 
-![](images/VSI%20creation%2003.png)
+![](Images/VSI%20creation%2003.png)
 
 ### 5. Reserve a floating IP and assign it to the required instance
 
@@ -98,9 +98,9 @@ To reserve and associate a floating IP address:
 1. Select the instance that you created and its network interface that you want to associate with the floating IP address.
 1. Click **Reserve IP**. The new IP address is displayed on the Floating IPs page.
 
-![](images/Floating%20IP%2001.png)
+![](Images/Floating%20IP%2001.png)
 
-![](images/Floating%20IP%2002.png)
+![](Images/Floating%20IP%2002.png)
 
 
 ### 7. Check security groups attached to VPC circuit
@@ -130,20 +130,20 @@ For example, you can configure inbound rules that do the following:
  
 Then, configure outbound rules that allow all TCP traffic.
 
-![](images/Security%20groups%2001.png)
+![](Images/Security%20groups%2001.png)
 
 ### 8. Check current rules for security groups in the VPC (Remote desktop protocol port is 3389)
-![](images/Security%20group%2002.png)
+![](Images/Security%20group%2002.png)
 
 In case that the port is not open, use the following example to open the necessary port:
 
-![](images/Security%20group%2003.png)
+![](Images/Security%20group%2003.png)
 
 ### 9. Connect to the instance using Remote Desktop protocol using the floating IP as target with any Remote desktop client.
 
  
 * To properly connect get encrypted password from UI and saved to a file
-![](images/password%2001.png)
+![](Images/password%2001.png)
 * decode it using: 
 ```
 cat UI_PASSWORD_FILE  | base64 --decode > decoded_base64_password_file
