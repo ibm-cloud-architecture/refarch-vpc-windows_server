@@ -17,7 +17,7 @@ This scenario considers the provisioning of a sample Windows based instance, acc
 
 ### Architecture
 
-![](Diagram05-30-19.png)
+![](/Diagram05-30-19.png)
 
 
 
