@@ -4,14 +4,14 @@ To build this scenario we will first deploy the VPC infrastructure to host the W
 
 ### Prerequisites
 
-1. Generate an [IBM Cloud API Key](https://console.bluemix.net/docs/iam/userid_keys.html#userapikey)\
+1. Generate an [IBM Cloud API Key](https://cloud.ibm.com/docs/iam?topic=iam-userapikey#userapikey)
     Once generated, create an environment variable labeled `apikey`.  Example:
     `apikey=<value of your apikey>`
-2. Have access to a public SSH key.
+2. Have access to a public SSH key
 3. curl command
 
 ### Generate an IAM Bearer Token
-[Documentation](https://console.bluemix.net/docs/iam/apikey_iamtoken.html#iamtoken_from_apikey)\
+[Documentation](https://cloud.ibm.com/docs/iam?topic=iam-iamtoken_from_apikey#iamtoken_from_apikey)
 Issue the following to generate a Bearer token:
 
 ```
@@ -199,7 +199,7 @@ curl -s --request GET --http1.1 --url "https://us-south.iaas.cloud.ibm.com/v1/vp
 
 Create a new VPC subnet in us-south-2 for ipv4-cidr-block 10.240.64.0/18.
 The initial status of a newly created subnet is set to **pending**; you must
-wait until the subnet staus is available before assiging any resources to it.
+wait until the subnet status is available before assigning any resources to it.
 
 ```
 
@@ -710,11 +710,10 @@ curl -s --request POST --http1.1 --url "https://us-south.iaas.cloud.ibm.com/v1/s
 }
 ```
 
-##Verify connectivity by using a remote client application with the FIP (from above output 169.61.160.16) 
+##Verify connectivity by using a remote client application with the FIP (from above output 169.61.160.16)
 
 
 
 ## Documentation Provided
 
 This section will provide links to all required documentation for this use case.
-

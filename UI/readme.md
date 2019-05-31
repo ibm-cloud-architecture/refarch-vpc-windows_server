@@ -1,4 +1,4 @@
-# Running a Windows deployment 
+# Running a Windows deployment
 ### Purpose
 This scenario considers the provisioning of a sample Windows based instance, accessing it over a public routable IP using remote desktop protocol
 
@@ -12,12 +12,12 @@ This scenario considers the provisioning of a sample Windows based instance, acc
 | Multiple Network Interfaces in VSI | :white_check_mark: | |
 | Windows VSI support | :white_check_mark: | |
 | Security groups | :white_check_mark: | |
-| Multiple Network Interfaces in VSI | :white_check_mark: | |
+| Multiple Network Interfaces in VSI | :white_check_mark: | | |
 
 
 ### Architecture
 
-![](/Diagram05-30-19.png)
+![](Windows%20deployment%20.png)
 
 
 
@@ -40,7 +40,7 @@ Go to the VPC Getting Started External link icon page in IBM Cloud console.
 2. Enter a name for the VPC, such as DemoWindows.
 3. Select or create the default ACL for new subnets in this VPC. In this tutorial, let's create a new default ACL. We'll configure rules for the ACL later.
 4. Enter a name for the new subnet in your VPC, such as DemoSubnet
-5. Select a location for the subnet. The location consists of a region and a zone. 
+5. Select a location for the subnet. The location consists of a region and a zone.
 6. Enter an IP range for the subnet in CIDR notation, for example: 10.240.0.0/18.
 7. Select an ACL for the subnet. Let's select Use VPC default to use the default ACL that's created for this VPC.
 8. Click Create virtual private cloud.
@@ -73,7 +73,7 @@ To create a virtual server instance in the newly created subnet:
 1. Note the **Location** field (read-only) that shows the location of the subnet on which the instance is created.
 1. Select an image (that is, operating system and version) such as Windows Server.
 1. To set the instance size, select one of the popular profiles or click **All profiles** to choose a different core and RAM combination that's most appropriate for your workload.
-1. Select an existing SSH key or add an SSH key that will be used to access the virtual server instance. 
+1. Select an existing SSH key or add an SSH key that will be used to access the virtual server instance.
 1. In the **Network interfaces** area, you can change the name and port speed of the interface. If you have more than one subnet in your VPC, you can select the subnet that you want to attach to the instance.
 
 You can also select which security groups to attach to this instance. By default, the VPC's default security group is attached. The default security group allows inbound SSH and ping traffic, all outbound traffic, and all traffic between instances in the group. All other traffic is blocked; you can configure rules to allow additional traffic. If you later edit the rules of the default security group, those updated rules will apply to all current and future instances in the group.
@@ -116,7 +116,7 @@ To configure the security group:
    * Specify a CIDR block or IP address for the permitted traffic. Alternatively, you can specify a security group in the same VPC to allow traffic to or from all instances of the selected security group.    
 
    **Tips:**  
-  * All rules are evaluated, regardless of the order in which they're added. 
+  * All rules are evaluated, regardless of the order in which they're added.
   * Rules are stateful, which means that return traffic in response to allowed traffic is automatically permitted. For example, a rule that allows inbound TCP traffic on port 80 also allows replying outbound TCP traffic on port 80 back to the originating host, without the need for an additional rule.
 1. _Optional:_ If you want to attach this security group to other instances, click **Attached interfaces** in the navigation pane  and select additional interfaces.
 1. When you finish creating rules, click the **All security groups** breadcrumb at the top of the page.
@@ -127,7 +127,7 @@ For example, you can configure inbound rules that do the following:
 
  * Allow all SSH traffic (TCP port 22)
  * Allow all ping traffic (ICMP type 8)
- 
+
 Then, configure outbound rules that allow all TCP traffic.
 
 ![](Images/Security%20groups%2001.png)
@@ -141,10 +141,10 @@ In case that the port is not open, use the following example to open the necessa
 
 ### 9. Connect to the instance using Remote Desktop protocol using the floating IP as target with any Remote desktop client.
 
- 
+
 * To properly connect get encrypted password from UI and saved to a file
 ![](Images/password%2001.png)
-* decode it using: 
+* decode it using:
 ```
 cat UI_PASSWORD_FILE  | base64 --decode > decoded_base64_password_file
 ```
@@ -160,4 +160,4 @@ cat finalpass
 
 ### Documentation Provided
 
-[VPC documentation](https://cloud.ibm.com/docs/vsi-is/getting-started.html#gettingstartedvsigen)
+[VPC documentation](hhttps://cloud.ibm.com/docs/vpc-on-classic?topic=vpc-on-classic-getting-started)

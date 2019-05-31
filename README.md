@@ -1,4 +1,4 @@
-# Running a Windows deployment 
+# Running a Windows deployment
 ### Purpose
 This scenario considers the provisioning of a sample Windows based instance, accessing it over a public routable IP using remote desktop protocol
 
@@ -12,25 +12,21 @@ This scenario considers the provisioning of a sample Windows based instance, acc
 | Multiple Network Interfaces in VSI | :white_check_mark: | |
 | Windows VSI support | :white_check_mark: | |
 | Security groups | :white_check_mark: | |
-| Multiple Network Interfaces in VSI | :white_check_mark: | |
+| Multiple Network Interfaces in VSI | :white_check_mark: | | |
 
 
 ### Architecture
 
-![](/Diagram05-30-19.png)
-
-
-
-
+![](Diagram05-30-19.png)
 
 ### Documented Steps VPC infrastructure
 
 ### Prerequisites
 
-1. Install the [IBM Cloud CLI](https://console.bluemix.net/docs/cli/reference/bluemix_cli/get_started.html#getting-started)
+1. Install the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-ibmcloud-cli#overview)
 2. Have access to a public SSH key.
-3. Install the infrastructure-service plugin.  
-   `$ ibmcloud plugin install infrastructure-service`
+3. Install the vpc-infrastructure plugin.  
+   `$ ibmcloud plugin install vpc-infrastructure`
 
 ### Login to IBM Cloud
 
@@ -46,7 +42,7 @@ If you have an API Key, use --apikey:
 ibmcloud is vpc-create WEB-DEMO --default
 ###### Parameters: Name, default
 Creating vpc WEB-DEMO in resource group default under account IBM - Mac's Org as user eariasn@us.ibm.com...
-                            
+
 ID                       a15040d1-8e16-4f3c-bcfb-942b3948d07a   
 Name                     WEB-DEMO   
 Default                  yes   
@@ -54,14 +50,14 @@ Default Network ACL      allow-all-network-acl-a15040d1-8e16-4f3c-bcfb-942b3948d
 Default Security Group   -   
 Resource Group           (e1d6e82017384baba3ecfb33f3f6a12c)   
 Created                  5 seconds ago   
-Status                   available 
+Status                   available
 ```
 ### 2. Create the base subnet
 ```
 ibmcloud is subnet-create WEB a15040d1-8e16-4f3c-bcfb-942b3948d07a us-south-1 --ipv4-cidr-block 10.240.10.0/24
 ###### Parameters: Name, VPC-ID, Region, IPV4-block
 Creating Subnet WEB in resource group default under account IBM - Mac's Org as user eariasn@us.ibm.com...
-                    
+
 ID               5f09dce3-72fd-469e-a110-648fcc23cd9f   
 Name             WEB   
 IPv*             ipv4   
@@ -102,7 +98,7 @@ ibmcloud is instance-create WEB01 a15040d1-8e16-4f3c-bcfb-942b3948d07a us-south-
 Creating instance WEB01 in resource group default under account IBM - Mac's Org as user eariasn@us.ibm.com...
 ###### Parameters: Name, VPC-ID, Region, Flavor, subnet, Network Speed, image-id, key-id
 
-                     
+
 ID                6e792d46-8c90-4288-89ac-4447ad46b2ef   
 Name              WEB01   
 Profile           b-4x16   
@@ -126,7 +122,7 @@ macbook-pro:bin earias
 ibmcloud is  floating-ip-reserve WEB01-eth0 --zone us-south-1
 Creating floating IP WEB01-eth0 in resource group default under account IBM - Mac's Org as user eariasn@us.ibm.com...
 ###### Parameters: Name, region
-                    
+
 ID               e136da39-d05d-49b6-82f4-008c9b3bdc7a   
 Address          169.61.244.100   
 Name             WEB01-eth0   
@@ -142,7 +138,7 @@ Tags             -
 
 ### 6. Assign the floating IP to the instance that is going to host the web services
 ```
-ibmcloud is instance-network-interface-floating-ip-add 6e792d46-8c90-4288-89ac-4447ad46b2ef 8ba85a22-9f03-4291-8d6a-cddf03de181b e136da39-d05d-49b6-82f4-008c9b3bdc7a 
+ibmcloud is instance-network-interface-floating-ip-add 6e792d46-8c90-4288-89ac-4447ad46b2ef 8ba85a22-9f03-4291-8d6a-cddf03de181b e136da39-d05d-49b6-82f4-008c9b3bdc7a
 Creating floatingip e136da39-d05d-49b6-82f4-008c9b3bdc7a for instance 6e792d46-8c90-4288-89ac-4447ad46b2ef under account IBM - Mac's Org as user eariasn@us.ibm.com...
 ###### Parameters: Instance-id, Instance-interface-id, floating-ip-id
 
@@ -161,10 +157,10 @@ Tags             -
 
 ### 7. Check security groups attached to VPC circuit
 ```
-ibmcloud is vpc a15040d1-8e16-4f3c-bcfb-942b3948d07a 
+ibmcloud is vpc a15040d1-8e16-4f3c-bcfb-942b3948d07a
 Getting vpc a15040d1-8e16-4f3c-bcfb-942b3948d07a under account IBM - Mac's Org as user eariasn@us.ibm.com...
 #### Parameters: VPC-id
-                            
+
 ID                       a15040d1-8e16-4f3c-bcfb-942b3948d07a   
 Name                     WEB-DEMO   
 Default                  yes   
@@ -186,11 +182,11 @@ b597cff2-38e8-4e6e-999d-000002251797   outbound    ipv4   all
 
 In case that the port is not open, use the following example to open the necessary port:
 
-ibmcloud is security-group-rule-add 2d364f0a-a870-42c3-a554-000001153485 inbound tcp --port-max 23 --port-min 23 --ip-version ipv4 
+ibmcloud is security-group-rule-add 2d364f0a-a870-42c3-a554-000001153485 inbound tcp --port-max 23 --port-min 23 --ip-version ipv4
 Creating rule for security group 2d364f0a-a870-42c3-a554-000001153485 under account IBM - Mac's Org as user eariasn@us.ibm.com...
 
 #### Parameters: security-group-id, DIRECTION PROTOCOL, Max destination port, Min destination port, IP version
-                          
+
 ID                     b597cff2-38e8-4e6e-999d-000002275001   
 Direction              inbound   
 IPv*                   ipv4   
@@ -201,9 +197,9 @@ Remote                 -
 
 ```
 
-### 9. Connect to the instance using Remote Desktop protocol using the floating IP as target. To properly connect the 
+### 9. Connect to the instance using Remote Desktop protocol using the floating IP as target. To properly connect the
 * Get encrypted password from UI and saved to a file
-* decode it using: 
+* decode it using:
 ```
 cat UI_PASSWORD_FILE  | base64 --decode > decoded_base64_password_file
 ```
@@ -219,7 +215,4 @@ cat finalpass
 
 ### Documentation Provided
 
-
-
-
-<links to documents>
+[VPC documentation](hhttps://cloud.ibm.com/docs/vpc-on-classic?topic=vpc-on-classic-getting-started)
