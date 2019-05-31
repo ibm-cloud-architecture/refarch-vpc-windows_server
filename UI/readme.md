@@ -27,7 +27,7 @@ This scenario considers the provisioning of a sample Windows based instance, acc
 ### Login to IBM Cloud
 Use IBMid or Softlayer ID as appropiate, notice that not all accounts have access to VPC infrastructure, please confirm with your IBM Cloud account master user.
 
-![](images/login.png)
+![](Images/login.png)
 
 
 ### 1. Create the base VPC and the base subnet for the virtual server deployment.
