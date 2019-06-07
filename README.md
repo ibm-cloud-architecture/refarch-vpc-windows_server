@@ -19,6 +19,11 @@ This scenario considers the provisioning of a sample Windows based instance, acc
 
 ![](Diagram05-30-19.png)
 
+To deploy this scenario using CLI follow instructions in this page, otherwise, click the links below to deploy this scenario using a different methodology.
+
+* [Deploy using the CLI](API.md)
+* [Deploy using the UI](UI.md)
+
 ### Documented Steps VPC infrastructure
 
 ### Prerequisites
